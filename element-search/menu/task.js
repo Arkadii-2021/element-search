@@ -1,6 +1,11 @@
-const menuActive = document.getElementsByClassName('menu_sub');
-const mainMenu = document.getElementsByClassName("menu menu_main");
+const allElements = document.querySelectorAll('.menu__item');
 
-for (menuItems of mainMenu) {
-	console.log(menuItems);
+for (const menuItems of allElements) {
+	menuItems.addEventListener('click', (event) => {
+		const findParent = event.target.closest(".menu__item");
+		const subMenu = findParent.querySelector(".menu_sub");
+		subMenu.classList.toggle("menu_active");
+		event.preventDefault();
+	})
 }
+
